@@ -1,8 +1,8 @@
 # MySQL Remote Host CSF Whitelister
 
-A secure and performance-optimized shell script that automatically syncs MySQL remote host IPs with CSF firewall on cPanel/WHM servers.
+A secure and performance-optimized shell script that automatically syncs MySQL remote host IPs with the CSF firewall on cPanel/WHM servers.
 
-This script fetches all non-local MySQL user host IPs and hostnames, excludes the server's own IPs and hostnames, and whitelists them using CSF — ensuring seamless remote MySQL access without manual firewall edits.
+This script fetches all non-local MySQL user host IPs and hostnames that are added to cPanel MySQL Remote Host, excludes the server's own IPs and hostnames, and whitelists them using CSF—ensuring seamless remote MySQL access without manual firewall entries and edits. The script, with cronjob, automatically adds new IP addresses to CSF (ConfigServer Firewall) when a cPanel user adds them to their cPanel MySQL Remote Host. It's super easy and time-saving!
 
 ---
 
@@ -27,11 +27,11 @@ chmod +x /root/mysql_csf_whitelist.sh
 
 ## ⏱ Cron Setup
 
-Run the script automatically every 1 minute or as per your need like 15 minutes:
+Run the script automatically every 1 minute or as per your need, like 15 minutes:
 
 `* * * * * /bin/bash /root/mysql_csf_whitelist.sh >> /var/log/mysql_csf_cron.log 2>&1`
 
-For debug/testing:
+For debugging/testing:
 
 `*/1 * * * * /bin/bash /root/mysql_csf_whitelist.sh --dry-run >> /var/log/mysql_csf_cron_test.log 2>&1`
 
@@ -51,7 +51,7 @@ For debug/testing:
 ./mysql_csf_whitelist.sh --dry-run
 `
 
-This will show all the IPs it would whitelist, without making any changes.
+This will show all the IPs it would whitelist without making any changes.
 
 ---
 
