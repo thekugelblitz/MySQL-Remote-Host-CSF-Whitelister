@@ -41,11 +41,15 @@ For debug/testing:
 
 ### ➤ Run Manually
 
-/root/mysql_csf_whitelist.sh
+`
+./mysql_csf_whitelist.sh
+`
 
 ### ➤ Dry Run
 
-/root/mysql_csf_whitelist.sh --dry-run
+`
+./mysql_csf_whitelist.sh --dry-run
+`
 
 This will show all the IPs it would whitelist, without making any changes.
 
