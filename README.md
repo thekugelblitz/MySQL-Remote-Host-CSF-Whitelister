@@ -72,6 +72,14 @@ This will show all the IPs it would whitelist without making any changes.
 
 ## 🧑‍💻 Example MySQL Output Handled
 
+CSF Output:
+
+`
+csf.allow: 45.11.XX.XX # Auto-whitelist:mysql:2025-04-08 - Tue Apr  8 03:21:20 2025
+`
+
+Default MySQL fetch query:
+
 ```
 mysql> SELECT Host, User FROM mysql.user WHERE Host NOT IN ('localhost', '127.0.0.1', '::1');
 +--------------+--------------------+
