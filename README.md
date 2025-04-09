@@ -57,6 +57,35 @@ This will show all the IPs it would whitelist without making any changes.
 
 ---
 
+### 🔁 Delisting Mechanism
+
+This script not only **adds** valid remote MySQL IPs to CSF, but it also includes an **automated delisting system** to keep your firewall clean and up-to-date.
+
+#### ✅ How it Works:
+- Every minute, the script checks all IPs currently allowed in CSF that were tagged by the script:  
+  `# Auto-whitelist:mysql`
+- If an IP is no longer found in the MySQL remote host entries (`mysql.user` table), it is automatically **removed** from CSF using:
+  ```bash
+  csf -ar <IP>
+  ```
+- This ensures only **actively used** and **valid** remote MySQL hosts stay whitelisted.
+
+#### 🧪 Example:
+If your `/etc/csf/csf.allow` contains:
+```
+116.203.XX.XX # Auto-whitelist:mysql
+```
+...but that IP is removed from MySQL remote access, it will be:
+- **Identified as stale**
+- **Removed from CSF automatically**
+
+#### 🔐 Safe & Clean:
+- Only entries that were originally added by the script (`Auto-whitelist:mysql`) will be removed.
+- No other CSF entries are touched.
+
+---
+
+
 ## 📂 Logs
 
 - ✅ Main Log: /var/log/mysql_csf_cron.log
