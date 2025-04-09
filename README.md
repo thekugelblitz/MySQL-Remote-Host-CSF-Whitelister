@@ -19,8 +19,9 @@ This script fetches all non-local MySQL user host IPs and hostnames that are add
 ## 📥 Installation
 
 `
-wget https://raw.githubusercontent.com/thekugelblitz/MySQL-Remote-Host-CSF-Whitelister/main/mysql_csf_whitelist.sh
-chmod +x /root/mysql_csf_whitelist.sh
+wget https://raw.githubusercontent.com/thekugelblitz/MySQL-Remote-Host-CSF-Whitelister/main/install_mysql_csf_whitelist.sh -O install_mysql_csf_whitelist.sh
+chmod +x install_mysql_csf_whitelist.sh
+./install_mysql_csf_whitelist.sh
 `
 
 ---
