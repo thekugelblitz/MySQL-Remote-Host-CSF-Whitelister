@@ -66,8 +66,8 @@ else
   done
 fi
 
-# === Delisting logic
-csf -l | grep "$TAG" | awk '{print $2}' | sort -u > "$CSF_TAGGED"
+# === Delisting logic using direct csf.allow tag scan
+grep "$TAG" /etc/csf/csf.allow | awk '{print $1}' | sort -u > "$CSF_TAGGED"
 comm -23 "$CSF_TAGGED" "$MYSQL_HOSTS" > "$TO_REMOVE"
 mapfile -t old_entries < "$TO_REMOVE"
 
